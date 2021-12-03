@@ -43,3 +43,7 @@ def abrir_carta(request, carta_id):
     carta_a_exibir = {'carta': carta}
     return render(request, 'abrir_carta.html', carta_a_exibir)
 
+def deletar_carta(request, carta_id):
+    carta = get_object_or_404(Carta, pk=carta_id)
+    carta.delete()
+    return redirect('index')

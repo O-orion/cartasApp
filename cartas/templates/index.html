@@ -16,13 +16,13 @@
                              <li class="list-group-item">
                                  <a href="{% url 'editar_carta' carta.id  %}" type="button" class="btn btn-primary">Editar</a>
                                  <a href="{% url 'abrir_carta' carta.id  %}" type="button" class="btn btn-warning">Abrir</a>
-                                 <a href="{% url 'editar_carta' carta.id  %}" type="button" class="btn btn-danger">Excluir</a>
+                                 <a href="{% url 'deletar_carta' carta.id %}" type="button" class="btn btn-danger">Excluir</a>
                              </li>
                          </ul>
                      </div>
                     {% endfor %}
                     {% else %}
-                     <p class="mt-4 text-muted text-center">Você ainda não escreveu nenhuma carta, <a href="">Clique aqui para escrever carta</a></p>
+                     <p class="mt-4 text-muted text-center">Você ainda não escreveu nenhuma carta, <a href="{% url 'novaCarta' %}">Clique aqui para escrever sua carta</a></p>
                     {% endif %}
               
             </div>
