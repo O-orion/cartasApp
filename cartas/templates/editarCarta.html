@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+  <main>
+    <h2 class="text-muted text-center">Atualizar carta</h2>
+    {% include 'partials/_alertas.html' %}
+    <div class="container ">
+      <form action="{% url 'atualizar_carta' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" id="carta_id" class="form-control" name="carta_id" value="{{carta.id}}" hidden>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Título</label>
+          <input name="titulo" type="text" class="form-control" id="exampleFormControlInput1" placeholder="O grande inverno" value="{{carta.titulo}}"> 
+        </div>
+        <div class="mb-3">
+          <label for="tema" class="form-label">Tema</label>
+          <input type="text"  name="tema" class="form-control" id="tema" placeholder="Sentimentos" value="{{carta.tema}}">
+        </div>
+        <div class="mb-3">
+          <label for="remetente" class="form-label">Remetente</label>
+          <input name="remetente" type="text" class="form-control" id="remetente" placeholder="De min" value="{{carta.remetente}}">
+        </div>
+        <div class="mb-3"> 
+          <label for="destinatario" class="form-label">Destinatário</label>
+          <input name="destinatario" type="text" class="form-control" id="destinatario" placeholder="Para minha amada" value="{{carta.destinatario}}">
+        </div>
+        <div class="mb-3">
+          <label for="texto" class="form-label"  >Seu texto</label>
+          <textarea  name="texto" class="form-control" id="texto"  rows="4" >{{carta.texto}}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="data" class="form-label">Data</label>
+            <input type="text" name="data" id="data" class="form-control" value="{{carta.data_carta}}" >
+        </div>
+        <button class="mb-5 btn btn-primary" type="submit">Enviar</button>
+      </form>
+    </div>
+      
+  </main>
+{% endblock%}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+  <main>
+    <h2 class="text-muted text-center">Escreva sua carta</h2>
+    {% include 'partials/_alertas.html' %}
+    <div class="container ">
+      <form action="{% url 'novaCarta' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Título</label>
+          <input name="titulo" type="text" class="form-control" id="exampleFormControlInput1" placeholder="O grande inverno">
+        </div>
+        <div class="mb-3">
+          <label for="tema" class="form-label">Tema</label>
+          <input type="text"  name="tema" class="form-control" id="tema" placeholder="Sentimentos">
+        </div>
+        <div class="mb-3">
+          <label for="remetente" class="form-label">Remetente</label>
+          <input name="remetente" type="text" class="form-control" id="remetente" placeholder="De min">
+        </div>
+        <div class="mb-3"> 
+          <label for="destinatario" class="form-label">Destinatário</label>
+          <input name="destinatario" type="text" class="form-control" id="destinatario" placeholder="Para minha amada">
+        </div>
+        <div class="mb-3">
+          <label for="texto" class="form-label"  >Seu texto</label>
+          <textarea  name="texto" class="form-control" id="texto"  rows="4"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Enviar</button>
+      </form>
+    </div>
+      
+  </main>
+{% endblock%}

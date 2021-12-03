@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+    <main>
+        <div class="mt-1 container ">
+            <div>
+                <h2 class="text-muted text-center">Minhas Cartas</h2>
+                    {% if cartas %}
+                    {% for carta in cartas %}
+                     <div class="card mb-3">
+                         <ul class="list-group list-group-flush">
+                             <li class="list-group-item bg-secondary">Titulo: {{carta.titulo}}</li>
+                             <li class="list-group-item">Tema: {{carta.tema}}</li>
+                             <li class="list-group-item">De: {{carta.remetente}}</li>
+                             <li class="list-group-item">Para: {{carta.destinatario}}</li>
+                             <li class="list-group-item">Data: {{carta.data_carta}}</li>
+                             <li class="list-group-item">
+                                 <a href="{% url 'editar_carta' carta.id  %}" type="button" class="btn btn-primary">Editar</a>
+                                 <a href="{% url 'abrir_carta' carta.id  %}" type="button" class="btn btn-warning">Abrir</a>
+                                 <a href="{% url 'editar_carta' carta.id  %}" type="button" class="btn btn-danger">Excluir</a>
+                             </li>
+                         </ul>
+                     </div>
+                    {% endfor %}
+                    {% else %}
+                     <p class="mt-4 text-muted text-center">Você ainda não escreveu nenhuma carta, <a href="">Clique aqui para escrever carta</a></p>
+                    {% endif %}
+              
+            </div>
+        </div>
+    </main>
+{% endblock %}
